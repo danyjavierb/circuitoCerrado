@@ -1,0 +1,149 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Lato Italic'), local('Lato-Italic'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
+}
+
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.intro, .menu, .instrucciones, .tablero{
+	position: relative;
+}
+
+.menu, .instrucciones, .tablero{
+	display: none;
+}
+
+.instrucciones{
+	padding: 0 40px;
+}
+
+.logoAlternativa{
+	float: left;
+	top: 10px;
+}
+
+.logoCIDC{
+	float: right;
+}
+
+.logoUniversidadDistrital{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#inicio{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu .botones{
+	width: 50%;
+	margin:51px auto;
+}
+
+.tablero{
+	padding: 14px;
+}
+
+.contenedorFichas, .contenedorTablero{
+	padding: 0;
+	float: left;
+}
+
+.contenedorTablero{
+	float: right;
+}
+
+.contenedorFichas div div{
+	height: 65px;		
+	border:solid;
+}
+
+.contenedorTablero div div{
+	height: 97px;
+	border:solid;
+}
+
+.page-header {
+	padding-bottom: 0px;
+	margin: 0px 0px 0px;
+	border-bottom: 1px solid #0d747c;
+}
+
+.contenedorJuego{
+	padding: 10px;
+}
+
+.contenedorJuego p {
+	font-size: 16px;
+}
+
+#time{
+	margin: 0 0 16;
+	float: left;
+}
+
+#puntaje{
+	margin: 0 0 16;
+	float: right;
+	text-align: right;
+}
+
+.texto1{
+	float: left;
+	font-size: 40px;
+	left: 50px;
+	position: relative;
+}
+
+.texto2{
+	float: right;
+	font-size: 40px;
+	right: 50px;
+	position: relative;
+}
+
+#contenedorFichas .img-responsive{
+	top: 7px;
+	position: relative;
+}
+
+#contenedorTablero .img-responsive{
+	width: 85px;
+	top: 24px;
+	left: 17px;
+	position: relative;
+}
+
+.modal{
+	display: none;
+}
+
+.modal-body{
+	text-align: center;
+}
+
+.label{
+	font-size: 20px;
+}
+
