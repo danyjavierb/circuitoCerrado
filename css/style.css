@@ -2,32 +2,41 @@
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+  src: url(../fonts/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
+  src: url(../fonts/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(http://themes.googleusercontent.com/static/fonts/lato/v7/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
+  src: url(../fonts/oUan5VrEkpzIazlUe5ieaA.woff) format('woff');
 }
-
 
 .starter-template {
   padding: 40px 15px;
   text-align: center;
 }
 
-.intro, .menu, .instrucciones, .tablero{
+.intro, .menu, .instrucciones, .tablero, .modalidad, .datosGrupo, .preferencias, .creditos{
 	position: relative;
 }
 
-.menu, .instrucciones, .tablero{
+.intro div div{
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.intro #inicio{
+	position: relative;
+	top:134px;
+}
+
+.menu, .instrucciones, .tablero, .modalidad, .datosGrupo, .preferencias, .creditos{
 	display: none;
 }
 
@@ -35,30 +44,10 @@
 	padding: 0 40px;
 }
 
-.logoAlternativa{
-	float: left;
-	top: 10px;
-}
-
-.logoCIDC{
-	float: right;
-}
-
-.logoUniversidadDistrital{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#inicio{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.menu .botones{
+.botones, .form, .opciones{
 	width: 50%;
 	margin:51px auto;
+	text-align: center;
 }
 
 .tablero{
@@ -72,6 +61,12 @@
 
 .contenedorTablero{
 	float: right;
+}
+
+
+.contenedorTablero div div{
+	background: url("../img/fondo.jpeg") no-repeat;
+	background-size: cover;
 }
 
 .contenedorFichas div div{
@@ -109,18 +104,13 @@
 	text-align: right;
 }
 
-.texto1{
-	float: left;
-	font-size: 40px;
-	left: 50px;
-	position: relative;
+#circuitos{
+	margin: 0 0 16;
+	float: right;
 }
 
-.texto2{
-	float: right;
+.texto1, .texto2{
 	font-size: 40px;
-	right: 50px;
-	position: relative;
 }
 
 #contenedorFichas .img-responsive{
@@ -146,4 +136,14 @@
 .label{
 	font-size: 20px;
 }
+
+.informacion{
+	text-align: center;
+}
+
+#nombre{
+	margin-bottom: 30px;
+}
+
+
 

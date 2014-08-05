@@ -38,28 +38,92 @@
             </div>
             <div class="contenedorJuego">
                 <div class="intro">
+
+                  <div class="col-lg-4">
                     <div class="row">
-                        <img class="logoAlternativa img-rounded" src="img/alternativa.png">
-                        <img class="logoCIDC img-rounded" src="img/cidc.png">
-                    </div>
-                    
-                    <div class="row">
-                        <img class="logoUniversidadDistrital img-rounded" src="img/universidadDistrital.png">
+                      <img alt="Alternativa" class="logoAlternativa img-rounded" src="img/alternativa.png">
                     </div>
 
                     <div class="row">
-                      <h3 class="texto1">SIIDLYM</h3>
-                      <h3 class="texto2">GIIPLYM</h3>
+                      <h3 alt="Semillero de investigación intedisciplinaria en didáctica del lenguaje y las matemáticas" class="texto1">SIIDLyM</h3>
+                      <h6>Semillero de investigación intedisciplinaria en didáctica del lenguaje y las matemáticas</h6>
                     </div>
-                    <hr>
+
                     <div class="row">
-                        <button id="inicio" type="button" class="btn-primary btn btn-lg">INICIO</button>
+                      <img alt="Universidad Distrital Francisco Jose de Caldas" class="logoUniversidadDistrital img-rounded" src="img/universidadDistrital.png">
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="row">
+                      <button alt ="Inicio" id="inicio" type="button" class="btn-primary btn btn-lg">INICIO</button>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="row">
+                      <img alt="Red Alternativa" class="redAlternatica img-rounded" src="img/alter-nativa.png">
+                    </div>
+
+                    <div class="row">
+                      <h3 alt="Grupo de investigación interdisciplinaria en pedagogía del lenguaje y las matemáticas" class="texto2">GIIPLyM</h3>
+                      <h6>Grupo de investigación interdisciplinaria en pedagogía del lenguaje y las matemáticas</h6>
+                    </div>
+
+                    <div class="row">
+                      <img alt="Centro de investigaciones y desarrollo científico" class="logoCIDC img-rounded" src="img/cidc.png">
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="preferencias">
+                  <div class="row">
+                    <h3>Preferencias</h3>
+                  </div>
+                  <div class="row">
+                    <div class="opciones">
+                      <div class="checkbox">
+                      <label>  
+                          <h3><input type="checkbox" name="preferencias" value="audio" checked> <span class="glyphicon glyphicon-volume-up"></span> Audio</h3>   
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <h3><input type="checkbox" name="preferencias" value="video"><span class="glyphicon glyphicon-film"></span> Video</h3> 
+                      </label>
+                    </div>
+                    <button tabindex="0" id="enviarPreferencias" type="button" class="btn btn-danger btn-lg btn-block">ENVIAR</button>
                     </div>
                 </div>
-                <div class="menu">
-                    <div class="row">
-                        <h2 class="inidividual">Individual</h2>
+              </div>
+
+                <div class="modalidad">
+                  <div class="row">
+                    <div tabindex="0" class="botones ">
+                      <button tabindex="1" id="individual" type="button" class="btn btn-primary btn-lg btn-block">INDIVIDUAL</button>
+                      <button tabindex="2" id="grupal" type="button" class="btn btn-danger btn-lg btn-block">GRUPO</button>
                     </div>
+                  </div>
+                </div>
+
+                <div class="datosGrupo">
+                  <div class="row">
+                    <div class="form"> 
+                      <div class="col-sm-10">
+                        <h3>Nombre</h3>
+                        <input id="nombre" type="text" class="form-control" id="inputName" placeholder="Nombre">
+                        <button id="enviar" type="button" class="btn btn-danger btn-lg btn-block">ENVIAR</button>
+                      </div>
+
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+
+                <div class="menu">
                     <div class="row">
                         <div tabindex="0" id="buttons" class="botones">
                             <button tabindex="1" id="individualPrincipiante" type="button" class="btn btn-success btn-lg btn-block">PRINCIPIANTE</button>
@@ -127,12 +191,14 @@
                 <div class="tablero">
                     <div class="row">
                         
-                        <h3 id="time" class="col-lg-4"></h3>
-                        
-                        <h3 id="puntaje" class="col-lg-4">Puntaje 0</h3>
+                        <h3 id="time" class="col-lg-2"></h3>
+                   
+                        <h3 id="puntaje" class="col-lg-2">Puntaje 0</h3>
 
-                        <div class="informacion col-lg-4">
-                          
+                        <h3 id="circuitos" class="col-lg-2">0 circuitos</h3>
+
+                        <div class="informacion col-lg-6">
+                          <span class='label label-danger'>SELECCIONA FICHA...</span>
                         </div>
                     </div>
                     <div class="row">
@@ -195,6 +261,18 @@
 
                     </div>
                 </div>
+
+                <div class="creditos">
+                  <div class="row">
+                    <h2>Créditos</h2>
+                  </div>
+                  <div class="row">
+
+                  </div>
+                  <div class="row">
+                    <button id="regresar" type="button" class="jugar btn btn-lg btn-success">MENU PRINCIPAL</button>
+                  </div>
+                </div>
             </div>
         </div>
         <!-- /.container -->
@@ -204,14 +282,15 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h1 class="modal-title">Game Over!</h1>
+                <h1 class="modal-title">El juego ha finalizado!</h1>
               </div>
               <div class="modal-body">
                 <p>Tu puntaje ha sido <span class="puntaje"></span></p>
               </div>
               <div class="modal-footer">
-                <button id="menuPrincipal" type="button" class="btn btn-success" data-dismiss="modal">Menu Principal</button>
                 <button id="reiniciar" type="button" class="btn btn-primary">Reiniciar Juego</button>
+                <button id="menuPrincipal" type="button" class="btn btn-success" data-dismiss="modal">Menu Principal</button> 
+                <button id="creditos" type="button" class="btn btn-danger" data-dismiss="modal">Créditos</button>               
               </div>
             </div>
           </div>

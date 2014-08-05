@@ -29,6 +29,7 @@ var down=40;
 var left=37;
 var right=39;
 var spacebar=32;
+var c = 67;
 
 var ubicacionObligatoria={
 	x:undefined,
@@ -42,6 +43,7 @@ var contadorFichasPuestas=0;
 
 var puntaje=0;
 var puntajeTemporal=0;
+var contadorCircuitos=0;
 
 var fichasUtilizadas=0; //se reinicia para cada circuito
 
@@ -65,12 +67,58 @@ $("#inicio").focus();
 
 $("#inicio").click(function () {
 	$(".intro").fadeOut();
-	$(".menu").fadeIn();
+	$(".preferencias").fadeIn();
 	$("#inicio").blur();
+	$(".preferencias #enviarPreferencias").focus();
+});
+
+$("#enviarPreferencias").click(function () {
+	$(".preferencias").fadeOut();
+	$(".modalidad").fadeIn();
+	$("#enviarPreferencias").blur();
+	$(".modalidad .botones .btn:first-child").focus();
+	iterarMenu("modalidad");
+});
+
+$("#individual").click(function () {
+	$(".modalidad").fadeOut();
+	$(".menu").fadeIn();
+	$(".modalidad .botones .btn:first-child").blur();
 	$(".menu .botones .btn:first-child").focus();
 	crearFichas();
 	crearMatrizFichas();
 	crearMatrizTablero();
+	iterarMenu("menu");
+});
+
+$("#grupal").click(function () {
+	$(".modalidad").fadeOut();
+	$(".datosGrupo").fadeIn();
+	$(".modalidad .botones .btn:first-child").blur();
+	$(".datosGrupo #nombre").focus();
+});
+
+$("#enviar").click(function () {
+	$(".datosGrupo").fadeOut();
+	$(".menu").fadeIn();
+	$(".datosGrupo #nombre").blur();
+	$(".menu .botones .btn:first-child").focus();
+	crearFichas();
+	crearMatrizFichas();
+	crearMatrizTablero();
+});
+
+$("#nombre").keydown(function(e){
+	if ( event.which == spacebar ) {
+	   $(".datosGrupo").fadeOut();
+		$(".menu").fadeIn();
+		$(".datosGrupo #nombre").blur();
+		$(".menu .botones .btn:first-child").focus();
+		crearFichas();
+		crearMatrizFichas();
+		crearMatrizTablero();
+		iterarMenu("menu");
+	}
 });
 
 $(".menu .btn").click(function () {
@@ -110,13 +158,27 @@ $("#reiniciar, .close").click(function(){
 
 $("#menuPrincipal").click(function(){
 	$(".tablero").fadeOut();
-	$(".menu").fadeIn();
+	$(".modalidad").fadeIn();
 	$(".modal").css("display","none");
 	$(".container").css("opacity",1);
-	window.location.hash=("#contenedorFichas");
-	window.location.hash=("#contenedorFichas");
+	window.location.hash=("#individual");
+	iterarMenu("modalidad");
 });
 
+$("#creditos").click(function(){
+	$(".tablero").fadeOut();
+	$(".creditos").fadeIn();
+	$(".modal").css("display","none");
+	$(".container").css("opacity",1);
+	window.location.hash=("#regresar");
+});
+
+$("#regresar").click(function(){
+	$(".creditos").fadeOut();
+	$(".modalidad").fadeIn();
+	window.location.hash=("#individual");
+	iterarMenu("modalidad");
+});
 /**********************************************************/
 
 /****************************LOGICA JUEGO*****************************/
@@ -239,10 +301,10 @@ function seleccionarFicha(e){
 			setCurrentFicha(x+1,y,matrizFichas);
 			
 			e.preventDefault();
-		} else if (e.keyCode == spacebar) {
+		}else if (e.keyCode == spacebar) {
 			if(matrizFichas[x][y].estado==0){
 				$(".informacion *").remove();
-			$(".informacion").fadeIn().append("<span class='label label-success'>FICHA SELECCIONADA...</span>").delay(tiempoInformacion).fadeOut();
+			$(".informacion").append("<span class='label label-success'>FICHA SELECCIONADA...</span>");
 				fichaSeleccionada = fichas[$(currentFicha).attr("id")];
 				$(currentFicha).css("border-color",bordeSeleccion);
 				contenedorFichas.removeEventListener("keydown", seleccionarFicha,false);
@@ -253,7 +315,7 @@ function seleccionarFicha(e){
 				window.location.hash="#contenedorTablero";
 			}else{
 				$(".informacion *").remove();
-				$(".informacion").fadeIn().append("<span class='label label-success'>FICHA UTILIZADA...SELECCIONA OTRA FICHA</span>").delay(tiempoInformacion).fadeOut();
+				$(".informacion").append("<span class='label label-success'>FICHA UTILIZADA...SELECCIONA OTRA FICHA</span>");
 				window.location.hash="#contenedorFichas";
 			}
 			
@@ -283,7 +345,13 @@ function seleccionarCasilla(e){
 			setCurrentCell(x+1,y,matrizTablero);
 			
 			e.preventDefault();
-		} else if (e.keyCode == spacebar) {
+		}else if(e.keyCode == c){
+			console.log("c!!!!");
+			contenedorTablero.removeEventListener("keydown", seleccionarCasilla,false);
+			contenedorFichas.addEventListener("keydown", seleccionarFicha,false);
+			window.location.hash=("#contenedorFichas");
+			reiniciarTablero();		
+		}else if (e.keyCode == spacebar) {
 			if(matrizTablero[x][y].estado==0 && 
 				((x==ubicacionObligatoria.x && y==ubicacionObligatoria.y) || ubicacionObligatoria.x==undefined) ){
 				if(ubicacionObligatoria.x==undefined){
@@ -297,12 +365,12 @@ function seleccionarCasilla(e){
 				fichaParaGirar = document.getElementById($(currentCell).attr("id")).firstChild;
 				fichaParaGirar.addEventListener("keydown", orientarFicha,false);
 				$(".informacion *").remove();
-				$(".informacion").fadeIn().append("<span class='label label-danger'>CASILLA SELECCIONADA...</span>").delay(tiempoInformacion).fadeOut();
+				$(".informacion").append("<span class='label label-danger'>CASILLA SELECCIONADA...</span>");
 				window.location.hash=("#img"+casillaSeleccionada.id);
 				e.preventDefault();
 			}else{
 				$(".informacion *").remove();
-				$(".informacion").fadeIn().append("<span class='label label-danger'>MOVIMIENTO INVALIDO...ELIGE OTRA CASILLA</span>").delay(tiempoInformacion).fadeOut();
+				$(".informacion").append("<span class='label label-danger'>MOVIMIENTO INVALIDO...ELIGE OTRA CASILLA</span>");
 			}	
 		}	
 }
@@ -328,12 +396,17 @@ var orientarFicha = function(e){
 		$(fichaParaGirar).css("transform","rotate(90deg)");
 		orientacion = 2;
 		e.preventDefault();
-	} else if (e.keyCode == spacebar){
+	} else if(e.keyCode == c){
+		fichaParaGirar.removeEventListener("keydown", orientarFicha,false);
+		contenedorFichas.addEventListener("keydown", seleccionarFicha,false);
+		reiniciarTablero();
+		window.location.hash=("#contenedorFichas");
+	}else if (e.keyCode == spacebar){
 		validarPosicion();
 
 		if(contadorGirar==4){
 			$(".informacion *").remove();
-			$(".informacion").fadeIn().append("<span class='label label-info'>NO ES POSIBLE PONER FICHA...</span>").delay(tiempoInformacion).fadeOut();
+			$(".informacion").append("<span class='label label-info'>NO ES POSIBLE PONER FICHA...</span>");
 			fichaParaGirar.removeEventListener("keydown", orientarFicha,false);
 			contenedorFichas.addEventListener("keydown", seleccionarFicha,false);
 			setCurrentFicha(0,0,matrizFichas);
@@ -349,16 +422,16 @@ var orientarFicha = function(e){
 var validarPosicion = function(){
 	var puntos = fichas[$(currentFicha).attr("id")].puntos;
 	var casilla = matrizTablero[x][y];
-	if((orientacion==1 && (y+puntos)<tamanoTablero && (matrizTablero[x][y+puntos].estado==0 || matrizTablero[x][y+puntos].primera==1)) ||
-		(orientacion==4 && (x-puntos)>=0 && (matrizTablero[x-puntos][y].estado==0 || matrizTablero[x-puntos][y].primera==1)) ||
-		(orientacion==3 && (y-puntos)>=0 && (matrizTablero[x][y-puntos].estado==0 || matrizTablero[x][y-puntos].primera==1)) ||
-		(orientacion==2 && (x+puntos)<tamanoTablero && (matrizTablero[x+puntos][y].estado==0 || matrizTablero[x+puntos][y].primera==1))){
+	if((orientacion==1 && (y+puntos)<tamanoTablero && (matrizTablero[x][y+puntos].estado==0 || (matrizTablero[x][y+puntos].primera==1 && contadorFichasPuestas>=minFichas-1))) ||
+		(orientacion==4 && (x-puntos)>=0 && (matrizTablero[x-puntos][y].estado==0 || (matrizTablero[x-puntos][y].primera==1 && contadorFichasPuestas>=minFichas-1))) ||
+		(orientacion==3 && (y-puntos)>=0 && (matrizTablero[x][y-puntos].estado==0 || (matrizTablero[x][y-puntos].primera==1 && contadorFichasPuestas>=minFichas-1))) ||
+		(orientacion==2 && (x+puntos)<tamanoTablero && (matrizTablero[x+puntos][y].estado==0 || (matrizTablero[x+puntos][y].primera==1 && contadorFichasPuestas>=minFichas-1)))){
 		//ponerFicha
 		puntajeTemporal+=puntos;
 		matrizTablero[x][y].estado=1; //casilla llena
 		ponerFicha($(currentFicha).attr("id"));
 		$(".informacion *").remove();
-		$(".informacion").fadeIn().append("<span class='label label-success'>FICHA PUESTA...</span>").delay(tiempoInformacion).fadeOut();
+		$(".informacion").append("<span class='label label-success'>FICHA PUESTA...</span>");
 		$(currentFicha).css("opacity",0.2);
 		switch(orientacion){
 			case 1:
@@ -387,13 +460,15 @@ var validarPosicion = function(){
 		if(contadorFichasPuestas==maxFichas && matrizTablero[ubicacionObligatoria.x][ubicacionObligatoria.y].primera==0){			
 			fichaParaGirar.removeEventListener("keydown", orientarFicha,false);
 			$(".informacion *").remove();
-			$(".informacion").fadeIn().append("<span class='label label-danger'>NO ES CIRCUITO CERRADO, INTENTALO DE NUEVO...</span>").delay(tiempoInformacion).fadeOut();
+			$(".informacion").append("<span class='label label-danger'>NO ES CIRCUITO CERRADO, INTENTALO DE NUEVO...</span>");
 			reiniciarTablero();	
 		}else if(contadorFichasPuestas<=maxFichas && contadorFichasPuestas>=minFichas && matrizTablero[ubicacionObligatoria.x][ubicacionObligatoria.y].primera==1){
 			$(".informacion *").remove();
-			$(".informacion").fadeIn().append("<span class='label label-success'>HAS CREADO UN CIRCUITO CERRADO!</span>").delay(tiempoInformacion).fadeOut();
+			$(".informacion").append("<span class='label label-success'>HAS CREADO UN CIRCUITO CERRADO!</span>");
+			contadorCircuitos++;
 			puntaje+=puntajeTemporal;
 			$("#puntaje").text("Puntaje "+puntaje);
+			$("#circuitos").text(contadorCircuitos+" circuitos");
 			reiniciarTablero();			
 		}
 		fichaParaGirar.removeEventListener("keydown", orientarFicha,false);
@@ -404,7 +479,7 @@ var validarPosicion = function(){
 				
 	}else{
 		$(".informacion *").remove();
-		$(".informacion").fadeIn().append("<span class='label label-danger'>DIRECCION INVALIDA...</span>").delay(tiempoInformacion).fadeOut();
+		$(".informacion").append("<span class='label label-danger'>DIRECCION INVALIDA...</span>");
 		contadorGirar++;
 	}
 };
@@ -462,21 +537,53 @@ var incrementarTiempo = function(){
 	time++;
 	$("#time").text(time+" segundos");
 	timeOut = setTimeout(incrementarTiempo,tiempoMaximo);
-	if(time==60){
-
-		console.log("JUEGO TERMINADO!!!!");
+	if(time==15){
 		time=0;
-		var mensaje = "GAME OVER Puntaje: "+puntaje;
 		stopTimeOut();
 		$(".modal").css("display","block");	 
 		$(".container").css("opacity",0.2);
 		$(".puntaje").text(puntaje);
 		puntaje=0;
 		reiniciarTablero(); 
+		iterarMenu("modal-footer");
 		window.location.hash="#reiniciar";	    
 	}
 };
 
 var stopTimeOut = function () {
     clearTimeout(timeOut);
+};
+
+var iterarMenu = function(contenedor){
+	var boton = $('.'+contenedor+' button');
+	var botonSeleccionado=$('.'+contenedor+' button:first-child');
+	$(window).keydown(function(e){
+	    if(e.which === down || e.which === right){
+	        if(botonSeleccionado){
+	            next = botonSeleccionado.next();
+	            if(next.length > 0){
+	                botonSeleccionado = next;
+	                var id=$(botonSeleccionado).attr("id");
+	            	window.location.hash="#"+id;
+	            }
+	        }else{
+	            botonSeleccionado = boton.eq(0).addClass('selected');
+	            var id=$(botonSeleccionado).attr("id");
+	            window.location.hash="#"+id;
+	        }
+	    }else if(e.which === up || e.which === left){
+	        if(botonSeleccionado){
+	            next = botonSeleccionado.prev();
+	            if(next.length > 0){
+	                botonSeleccionado = next;
+	                var id=$(botonSeleccionado).attr("id");
+	            	window.location.hash="#"+id;
+	            }
+	        }else{
+	            botonSeleccionado = boton.last();
+	            var id=$(botonSeleccionado).attr("id");
+	            window.location.hash="#"+id;
+	        }
+	    }
+	});
 };
