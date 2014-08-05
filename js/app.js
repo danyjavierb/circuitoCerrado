@@ -537,7 +537,7 @@ var incrementarTiempo = function(){
 	time++;
 	$("#time").text(time+" segundos");
 	timeOut = setTimeout(incrementarTiempo,tiempoMaximo);
-	if(time==15){
+	if(time==180){
 		time=0;
 		stopTimeOut();
 		$(".modal").css("display","block");	 
