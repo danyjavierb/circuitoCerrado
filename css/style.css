@@ -22,7 +22,7 @@
   text-align: center;
 }
 
-.intro, .menu, .instrucciones, .tablero, .modalidad, .datosGrupo, .preferencias, .creditos{
+.intro, .menu, .instrucciones, .tablero, .modalidad, .datosGrupo, .preferencias, .creditos, .rooms{
 	position: relative;
 }
 
@@ -36,7 +36,7 @@
 	top:134px;
 }
 
-.menu, .instrucciones, .tablero, .modalidad, .datosGrupo, .preferencias, .creditos{
+.menu, .instrucciones, .tablero, .modalidad, .datosGrupo, .preferencias, .creditos, .rooms{
 	display: none;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .botones, .form, .opciones{
-	width: 50%;
+	width: 45%;
 	margin:51px auto;
 	text-align: center;
 }
@@ -114,7 +114,7 @@
 }
 
 #contenedorFichas .img-responsive{
-	top: 7px;
+	top: 5px;
 	position: relative;
 }
 

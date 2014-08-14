@@ -60,6 +60,7 @@ contenedorFichas.addEventListener("keydown", seleccionarFicha,false);
 var bordeNormal="rgb(44, 62, 80)";
 var bordeIteracion = "rgb(24, 188, 156)";
 var bordeSeleccion = "rgb(231, 76, 60)";
+var bordeAncho = "5px";
 
 
 /*********************EVENTOS MENU********************/
@@ -111,14 +112,25 @@ $("#enviar").click(function () {
 $("#nombre").keydown(function(e){
 	if ( event.which == spacebar ) {
 	   $(".datosGrupo").fadeOut();
-		$(".menu").fadeIn();
+		$(".rooms").fadeIn();
 		$(".datosGrupo #nombre").blur();
 		$(".menu .botones .btn:first-child").focus();
 		crearFichas();
 		crearMatrizFichas();
 		crearMatrizTablero();
-		iterarMenu("menu");
+		iterarMenu("rooms");
+		$(".rooms div .botones:first-child .btn:first-child").focus();
+		/////////////////////////////ENVIAR NOMBRE
 	}
+});
+
+$(".rooms .btn").click(function(){
+	$(".rooms").fadeOut();	
+	$(".menu").fadeIn();
+	var room = $(this).index();
+	$(".menu .botones .btn:first-child").focus();
+	iterarMenu("menu");
+	/////////////////////////////////ENVIAR ROOM
 });
 
 $(".menu .btn").click(function () {
@@ -141,10 +153,13 @@ $(".menu .btn").click(function () {
 });
 
 $(".jugar").click(function () {
+	$("#"+nivel).blur();
 	$(".instrucciones."+nivel).fadeOut();
 	$(".tablero").fadeIn();
 	window.location.hash="#contenedorFichas";
-	$("#contenedorFichas div:first-child div:first-child").css("border-color",bordeIteracion);
+	$("#contenedorFichas div:first-child div:first-child").css(
+		{"border-color":bordeIteracion,
+		"border-width":bordeAncho});
 	incrementarTiempo();
 });
 
@@ -152,7 +167,9 @@ $("#reiniciar, .close").click(function(){
 	incrementarTiempo();
 	$(".modal").css("display","none");
 	$(".container").css("opacity",1);
-	$("#contenedorFichas div:first-child div:first-child").css("border-color",bordeIteracion);
+	$("#contenedorFichas div:first-child div:first-child").css(
+		{"border-color":bordeIteracion,
+		"border-width":bordeAncho});
 	window.location.hash=("#contenedorFichas");
 });
 
@@ -263,7 +280,9 @@ var setCurrentFicha = function(i,j,matriz) {
 	if (j<0) j=0;
 	if (j>=matriz[i].length) j=matriz[i].length-1;
 	currentFicha = $("#"+matriz[i][j].id);
-	$(currentFicha).css("border-color",bordeIteracion);
+	$(currentFicha).css({
+		"border-color":bordeIteracion,
+		"border-width":bordeAncho});
 	x=i;
 	y=j;
 };
@@ -274,14 +293,16 @@ var setCurrentCell = function(i,j,matriz) {
 	if (j<0) j=0;
 	if (j>=matriz[i].length) j=matriz[i].length-1;
 	currentCell = $("#t"+matriz[i][j].id);
-	$(currentCell).css("border-color",bordeIteracion);
+	$(currentCell).css(
+		{"border-color":bordeIteracion,
+		"border-width":bordeAncho});
 	x=i;
 	y=j;
 };
 
 function seleccionarFicha(e){	
 		
-		$(currentFicha).css("border-color",bordeNormal);		
+		$(currentFicha).css({"border-color":bordeNormal,"border-width":"3px"});		
 		if (e.keyCode == left) {
 			// left
 			setCurrentFicha(x,y-1,matrizFichas);			
@@ -306,7 +327,9 @@ function seleccionarFicha(e){
 				$(".informacion *").remove();
 			$(".informacion").append("<span class='label label-success'>FICHA SELECCIONADA...</span>");
 				fichaSeleccionada = fichas[$(currentFicha).attr("id")];
-				$(currentFicha).css("border-color",bordeSeleccion);
+				$(currentFicha).css({
+					"border-color":bordeSeleccion,
+					"border-width":bordeAncho});
 				contenedorFichas.removeEventListener("keydown", seleccionarFicha,false);
 				contenedorTablero.addEventListener("keydown", seleccionarCasilla,false);
 				setCurrentCell(0,0,matrizTablero);
@@ -324,7 +347,7 @@ function seleccionarFicha(e){
 }
 
 function seleccionarCasilla(e){			
-		$(currentCell).css("border-color",bordeNormal);		
+		$(currentCell).css({"border-color":bordeNormal,"border-width":"3px"});		
 		if (e.keyCode == left) {
 			// left
 			setCurrentCell(x,y-1,matrizTablero);
@@ -346,10 +369,11 @@ function seleccionarCasilla(e){
 			
 			e.preventDefault();
 		}else if(e.keyCode == c){
-			console.log("c!!!!");
 			contenedorTablero.removeEventListener("keydown", seleccionarCasilla,false);
 			contenedorFichas.addEventListener("keydown", seleccionarFicha,false);
 			window.location.hash=("#contenedorFichas");
+			$(".informacion *").remove();
+			$(".informacion").append("<span class='label label-success'>INICIANDO NUEVO CIRCUITO...</span>");
 			reiniciarTablero();		
 		}else if (e.keyCode == spacebar) {
 			if(matrizTablero[x][y].estado==0 && 
@@ -359,13 +383,15 @@ function seleccionarCasilla(e){
 				}
 				casillaSeleccionada = matrizTablero[x][y];
 				console.log(currentCell);
-				$(currentCell).css("border-color",bordeSeleccion);
+				$(currentCell).css({
+					"border-color":bordeSeleccion,
+					"border-width":bordeAncho});
 				$(currentCell).append('<img class="img-responsive" id="img'+casillaSeleccionada.id+'" tabindex="0" src="'+$("#"+$(currentFicha).attr("id")+" img").attr("src")+'" />');
 				contenedorTablero.removeEventListener("keydown", seleccionarCasilla,false);
 				fichaParaGirar = document.getElementById($(currentCell).attr("id")).firstChild;
 				fichaParaGirar.addEventListener("keydown", orientarFicha,false);
 				$(".informacion *").remove();
-				$(".informacion").append("<span class='label label-danger'>CASILLA SELECCIONADA...</span>");
+				$(".informacion").append("<span class='label label-info'>CASILLA SELECCIONADA...</span>");
 				window.location.hash=("#img"+casillaSeleccionada.id);
 				e.preventDefault();
 			}else{
@@ -400,10 +426,11 @@ var orientarFicha = function(e){
 		fichaParaGirar.removeEventListener("keydown", orientarFicha,false);
 		contenedorFichas.addEventListener("keydown", seleccionarFicha,false);
 		reiniciarTablero();
+		$(".informacion *").remove();
+		$(".informacion").append("<span class='label label-success'>INICIANDO NUEVO CIRCUITO...</span>");
 		window.location.hash=("#contenedorFichas");
 	}else if (e.keyCode == spacebar){
 		validarPosicion();
-
 		if(contadorGirar==4){
 			$(".informacion *").remove();
 			$(".informacion").append("<span class='label label-info'>NO ES POSIBLE PONER FICHA...</span>");
@@ -496,7 +523,7 @@ var reiniciarTablero = function(){
 	fichasUtilizadas=0;
 	$("#time").text(time+" segundos");
 	$("#puntaje").text("Puntaje "+puntaje);
-	$("#contenedorFichas div div, #contenedorTablero div div").css("border-color",bordeNormal);
+	$("#contenedorFichas div div, #contenedorTablero div div").css({"border-color":bordeNormal,"border-width":"3px"});
 };
 
 var ponerFicha = function(id){
