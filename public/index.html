@@ -1,0 +1,322 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+        <title>Circuito Cerrado</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Circuito Cerrado</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-inverse-collapse">
+                <form class="navbar-form navbar-left">
+                    <input type="text" class="form-control col-lg-8" placeholder="Search">
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="titulo">Circuito Cerrado</h1>
+            </div>
+            <div class="contenedorJuego">
+                <div class="intro">
+
+                  <div class="col-lg-4">
+                    <div class="row">
+                      <img alt="Alternativa" class="logoAlternativa img-rounded" src="img/alternativa.png">
+                    </div>
+
+                    <div class="row">
+                      <h3 alt="Semillero de investigación intedisciplinaria en didáctica del lenguaje y las matemáticas" class="texto1">SIIDLyM</h3>
+                      <h6>Semillero de investigación intedisciplinaria en didáctica del lenguaje y las matemáticas</h6>
+                    </div>
+
+                    <div class="row">
+                      <img alt="Universidad Distrital Francisco Jose de Caldas" class="logoUniversidadDistrital img-rounded" src="img/universidadDistrital.png">
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="row">
+                      <button alt ="Inicio" id="inicio" type="button" class="btn-primary btn btn-lg">INICIO</button>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    <div class="row">
+                      <img alt="Red Alternativa" class="redAlternatica img-rounded" src="img/alter-nativa.png">
+                    </div>
+
+                    <div class="row">
+                      <h3 alt="Grupo de investigación interdisciplinaria en pedagogía del lenguaje y las matemáticas" class="texto2">GIIPLyM</h3>
+                      <h6>Grupo de investigación interdisciplinaria en pedagogía del lenguaje y las matemáticas</h6>
+                    </div>
+
+                    <div class="row">
+                      <img alt="Centro de investigaciones y desarrollo científico" class="logoCIDC img-rounded" src="img/cidc.png">
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="preferencias">
+                  <div class="row">
+                    <h3>Preferencias</h3>
+                  </div>
+                  <div class="row">
+                    <div class="opciones">
+                      <div class="checkbox">
+                      <label>  
+                          <h3><input type="checkbox" name="preferencias" value="audio" checked> <span class="glyphicon glyphicon-volume-up"></span> Audio</h3>   
+                      </label>
+                    </div>
+                    <div class="checkbox">
+                      <label>
+                        <h3><input type="checkbox" name="preferencias" value="video"><span class="glyphicon glyphicon-film"></span> Video</h3> 
+                      </label>
+                    </div>
+                    <button tabindex="0" id="enviarPreferencias" type="button" class="btn btn-danger btn-lg btn-block">ENVIAR</button>
+                    </div>
+                </div>
+              </div>
+
+                <div class="modalidad">
+                  <div class="row">
+                    <div tabindex="0" class="botones ">
+                      <button tabindex="1" id="individual" type="button" class="btn btn-primary btn-lg btn-block">INDIVIDUAL</button>
+                      <button tabindex="2" id="grupal" type="button" class="btn btn-danger btn-lg btn-block">GRUPO</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="datosGrupo">
+                  <div class="row">
+                    <div class="form"> 
+                      <div class="col-sm-10">
+                        <h3>Nombre</h3>
+                        <input id="nombre" type="text" class="form-control" id="inputName" placeholder="Nombre">
+                        <button id="enviar" type="button" class="btn btn-danger btn-lg btn-block">ENVIAR</button>
+                      </div>
+
+                      
+                    </div>
+                    
+                  </div>
+                </div>
+
+                <div class="menu">
+                    <div class="row">
+                        <div tabindex="0" id="buttons" class="botones">
+                            <button tabindex="1" id="individualPrincipiante" type="button" class="btn btn-success btn-lg btn-block">PRINCIPIANTE</button>
+                            <button tabindex="2" id="individualIntermedio" type="button" class="btn btn-primary btn-lg btn-block">INTERMEDIO</button>
+                            <button tabindex="3" id="individualExperto" type="button" class="btn btn-danger btn-lg btn-block">EXPERTO</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rooms">
+                  <div class="row">
+                    <div tabindex="0" class="botones">
+                        <button tabindex="1" id="room1" type="button" class="room btn btn-success btn-lg btn-block">Sala 1</button>
+                        <button tabindex="2" id="room2" type="button" class="room btn btn-success btn-lg btn-block">Sala 2</button>
+                       <button tabindex="3" id="room3" type="button" class="room btn btn-success btn-lg btn-block">Sala 3</button>
+                       <button tabindex="4" id="room4" type="button" class="room btn btn-success btn-lg btn-block">Sala 4</button>
+                       <button tabindex="5" id="room5" type="button" class="room btn btn-success btn-lg btn-block">Sala 5</button>
+                    </div>
+
+                    
+                  </div>
+                </div>
+
+
+                <div class="instrucciones individualPrincipiante">
+                    <div class="row">
+                        <h2 class="inidividual">Instrucciones</h2>
+                    </div>
+                    <div class="row">
+                        <p>Este nivel se juega sólo con cuatro fichas <br>
+                            -El juego comienza cuando se coloca una ficha sobre el tablero, esta ficha se pone hacía la izquierda, derecha, arriba o abajo según el número de puntos de la ficha.<br>
+                            -El juego continúa avanzando en la orientación de la primera ficha (Si está hacia la izquierda se avanza hacia la izquierda, si está hacia la derecha se avanza hacia la derecha, si está hacia arriba se avanza hacia arriba y si está hacia abajo se avanza hacia abajo), tantas casillas como puntos tenga la ficha.<br><br>
+                            Movimientos inválidos <br><br>
+                            -Colocar una ficha sin tener en cuenta el número de puntos de la anterior.<br>
+                            -Al contar el número de puntos que indique la ficha, la orientación de la misma tiene que enviar a la siguiente ficha a una casilla dentro del tablero.
+                        </p>
+                    </div>
+                 
+                    <div class="row">
+                        <button  type="button" class="jugar btn btn-lg btn-primary">JUGAR</button>
+                    </div>
+                </div>
+                <div class="instrucciones individualIntermedio">
+                    <div class="row">
+                        <h2 class="inidividual">Instrucciones</h2>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <p>Este nivel se juega sólo con diez fichas <br>
+                            -El juego comienza cuando se coloca una ficha sobre el tablero, esta ficha se pone hacía la izquierda, derecha, arriba o abajo según el número de puntos de la ficha.<br>
+                            -El juego continúa avanzando en la orientación de la primera ficha (Si está hacia la izquierda se avanza hacia la izquierda, si está hacia la derecha se avanza hacia la derecha, si está hacia arriba se avanza hacia arriba y si está hacia abajo se avanza hacia abajo), tantas casillas como puntos tenga la ficha.<br><br>
+                            Movimientos inválidos <br><br>
+                            -Colocar una ficha sin tener en cuenta el número de puntos de la anterior.<br>
+                            -Al contar el número de puntos que indique la ficha, la orientación de la misma tiene que enviar a la siguiente ficha a una casilla dentro del tablero.
+                        </p>
+                    </div>
+                  
+                    <div class="row">
+                        <button type="button" class="jugar btn btn-lg btn-success">JUGAR</button>
+                    </div>
+                </div>
+                <div class="instrucciones individualExperto">
+                    <div class="row">
+                        <h2 class="inidividual">Instrucciones</h2>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <p>Este nivel se juega con 16 fichas <br>
+                            -El juego comienza cuando se coloca una ficha sobre el tablero, esta ficha se pone hacía la izquierda, derecha, arriba o abajo según el número de puntos de la ficha.<br>
+                            -El juego continúa avanzando en la orientación de la primera ficha (Si está hacia la izquierda se avanza hacia la izquierda, si está hacia la derecha se avanza hacia la derecha, si está hacia arriba se avanza hacia arriba y si está hacia abajo se avanza hacia abajo), tantas casillas como puntos tenga la ficha.<br><br>
+                            Movimientos inválidos <br><br>
+                            -Colocar una ficha sin tener en cuenta el número de puntos de la anterior.<br>
+                            -Al contar el número de puntos que indique la ficha, la orientación de la misma tiene que enviar a la siguiente ficha a una casilla dentro del tablero.
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <button type="button" class="jugar btn btn-lg btn-success">JUGAR</button>
+                    </div>
+                </div>
+                <div class="tablero">
+                    <div class="row">
+                        
+                        <h3 id="time" class="col-lg-2"></h3>
+                   
+                        <h3 id="puntaje" class="col-lg-2">Puntaje 0</h3>
+
+                        <h3 id="circuitos" class="col-lg-2">0 circuitos</h3>
+
+                        <div class="informacion col-lg-6">
+                          <span class='label label-danger'>SELECCIONA FICHA...</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div tabindex="0" id="contenedorFichas" class="contenedorFichas col-lg-4">
+                          <div class="row">
+                              <div id="0" class="col-lg-4"><img class="img-responsive" src="img/tresPuntos.png"></div>
+                              <div id="1" class="col-lg-4"><img class="img-responsive" src="img/tresPuntos.png"></div>
+                              <div id="2" class="col-lg-4"><img class="img-responsive" src="img/tresPuntos.png"></div>
+                          </div>
+                          <div class="row">
+                              <div id="3" class="col-lg-4"><img class="img-responsive" src="img/tresPuntos.png"></div>
+                              <div id="4" class="col-lg-4"><img class="img-responsive" src="img/tresPuntos.png"></div>
+                              <div id="5" class="col-lg-4"><img class="img-responsive" src="img/tresPuntos.png"></div>
+                          </div>
+                          <div class="row">
+                              <div id="6" class="col-lg-4"><img class="img-responsive" src="img/tresPuntos.png"></div>
+                              <div id="7" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                              <div id="8" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                          </div>
+                          <div class="row">
+                              <div id="9" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                              <div id="10" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                              <div id="11" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                          </div>
+                          <div class="row">
+                              <div id="12" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                              <div id="13" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                              <div id="14" class="col-lg-4"><img class="img-responsive" src="img/dosPuntos.png"></div>
+                          </div>
+                          <div class="row">
+                              <div id="15" class="col-lg-4"><img class="img-responsive" src="img/unPunto.png"></div>
+                          </div>
+                      </div>
+                      <div tabindex="1" id="contenedorTablero" class="contenedorTablero col-lg-7">
+                          <div class="row">
+                              <div id="t0" class="col-lg-3"></div>
+                              <div id="t1" class="col-lg-3"></div>
+                              <div id="t2" class="col-lg-3"></div>
+                              <div id="t3" class="col-lg-3"></div>
+                          </div>
+                          <div class="row">
+                              <div id="t4" class="col-lg-3"></div>
+                              <div id="t5" class="col-lg-3"></div>
+                              <div id="t6" class="col-lg-3"></div>
+                              <div id="t7" class="col-lg-3"></div>
+                          </div>
+                          <div class="row">
+                              <div id="t8" class="col-lg-3"></div>
+                              <div id="t9" class="col-lg-3"></div>
+                              <div id="t10" class="col-lg-3"></div>
+                              <div id="t11" class="col-lg-3"></div>
+                          </div>
+                          <div class="row">
+                              <div id="t12" class="col-lg-3"></div>
+                              <div id="t13" class="col-lg-3"></div>
+                              <div id="t14" class="col-lg-3"></div>
+                              <div id="t15" class="col-lg-3"></div>
+                          </div>
+                      </div>
+
+                    </div>
+                </div>
+
+                <div class="creditos">
+                  <div class="row">
+                    <h2>Créditos</h2>
+                  </div>
+                  <div class="row">
+
+                  </div>
+                  <div class="row">
+                    <button id="regresar" type="button" class="jugar btn btn-lg btn-success">MENU PRINCIPAL</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+
+        <div class="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title">El juego ha finalizado!</h1>
+              </div>
+              <div class="modal-body">
+                <p>Tu puntaje ha sido <span class="puntaje"></span></p>
+              </div>
+              <div class="modal-footer">
+                <button id="reiniciar" type="button" class="btn btn-primary">Reiniciar Juego</button>
+                <button id="menuPrincipal" type="button" class="btn btn-success" data-dismiss="modal">Menu Principal</button> 
+                <button id="creditos" type="button" class="btn btn-danger" data-dismiss="modal">Créditos</button>               
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+       <script src="/socket.io/socket.io.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
